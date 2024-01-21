@@ -16,6 +16,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CustomerController {
 
+    // initBinder work as a pre-processor for all the requests that are coming
+// to this controller. it means this method will be called before every
+// method of this controller.
+    @InitBinder
+    public  void initBinder(WebDataBinder dataBinder){
+        // part of the spring APi, use to trim the white spaces around the strings,
+        // And the 'true' passing in the constructor indicates if the string only
+        // have whitespaces, then trim the string to null
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        // registering the stringTrimmerEditor on databinder to do this to
+        //all the strings coming to this controller
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
+
     @GetMapping("/")
     public String showForm(Model model){
         Customer customer  = new Customer();
