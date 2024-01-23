@@ -6,5 +6,11 @@
 </head>
 <body>
 The customer is confirmed: <span th:text="${customer.firstName + ' ' +customer.lastName}"/>
+<br>
+<br>
+Postal Code: <span th:text="${customer.postalCode}"/>
+<br>
+<br>
+Number of free passes for this user: <span th:text="${customer.freePasses}"/>
 </body>
 </html>

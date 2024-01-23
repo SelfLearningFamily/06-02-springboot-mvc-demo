@@ -44,6 +44,8 @@ public class CustomerController {
     public String landingFormProcess(
             @Valid @ModelAttribute("customer") Customer customer,
             BindingResult bindingResult){
+        System.out.println("Binding object: " + bindingResult.toString());
+        System.out.println("\n\n\n");
         if(bindingResult.hasErrors())
             return "customer-form";
         else
